@@ -14,7 +14,9 @@ import { NavigationMixin } from 'lightning/navigation';
     
     // Handles search boat event
     // This custom event comes from the form
-    searchBoats(event) { }
+    searchBoats(event) {
+        
+    }
     
     createNewBoat() {
         this[NavigationMixin.Navigate]({
