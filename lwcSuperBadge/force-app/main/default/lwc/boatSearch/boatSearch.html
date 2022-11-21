@@ -3,24 +3,19 @@
         <!-- Top -->
         <lightning-layout-item size="12">
             <lightning-card title="Find a Boat">
-            <slot name="actions">
-                <lightning-button
-                    label="New Boat" 
-                    title="New Boat" 
-                    onclick={createNewBoat} 
-                    class="slds-m-left_x-small">
-                </lightning-button>
-            </slot>
-            <p class="slds-var-p-horizontal_small">
-                <c-boat-search-form></c-boat-search-form>
-            </p>
+                <lightning-button label="New Boat" onclick={createNewBoat} slot="actions"></lightning-button>
+                <p class="slds-var-p-horizontal_small">
+                    <c-boat-search-form onsearch={searchBoats}></c-boat-search-form>
+                </p>
             </lightning-card>
         </lightning-layout-item>
         <!-- Bottom -->
         <lightning-layout-item size="12" class="slds-p-top_small slds-is-relative">
-            <lightning-spinner if:true={_isLoading} alternative-text="Loading" variant="brand" size="small"></lightning-spinner>
-            <!-- boatSearchResults here -->
+            <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Loading" variant="brand"></lightning-spinner>
+            </template>
+            <c-boat-search-results onloading={handleLoading} ondoneloading={handleDoneLoading}></c-boat-search-results>
             <!-- onloading={handleLoading} ondoneloading={handleDoneLoading} -->
         </lightning-layout-item>
     </lightning-layout>
-  </template>
+</template>
